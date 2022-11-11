@@ -96,6 +96,7 @@ int mai(){
             else{
                 retreat();
             }
+            if (go == false){return 0;}
             role1--;
 
         //Menjalankan Enemy
@@ -136,7 +137,6 @@ int mai(){
                 display();
             }
         } 
-        if (go == 1){return 0;}
         role1++;
     }while (pl.HP > 0 && enemy.HP > 0);
     if (pl.HP <= 0){
@@ -180,6 +180,7 @@ int mai(){
             else{
                 retreat();
             }
+            if (go == false){return 0;}
             role2--;
 
         //Menjalankan Enemy
@@ -201,7 +202,6 @@ int mai(){
                 cout<<"Increasing Its Fire Power and Penetration Capability!"<<endl<<endl;
                 display();
             }
-            if (go == false){return 0;}
             role2++;
         } 
     }while (pl.HP > 0 && enemy.HP > 0);
@@ -246,6 +246,7 @@ int mai(){
             else{
                 retreat();
             }
+            if (go == false){return 0;}
             role3--;
 
         //Menjalankan Enemy
@@ -283,7 +284,6 @@ int mai(){
                 display();
             }
         } 
-        if (go == false){return 0;}
         role3++;
     }while (pl.HP > 0 && enemy.HP > 0);
     if (enemy.HP <= 0){
@@ -331,7 +331,7 @@ void attack(){
 }
 //heal
 void heal(){
-    pl.HP += 600 + ((rand()%35)-10);
+    pl.HP += 800 + ((rand()%35)-10);
     if (pl.HP > 6000){pl.HP = 6000;}
     cout<<"Prinz Eugen Repaired Her Wound!"<<endl<<endl;
     display();
