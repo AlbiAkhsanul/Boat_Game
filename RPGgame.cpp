@@ -13,28 +13,28 @@ struct entities {
     int torps;
 };
 entities pl{
-    "KMS Tirpitz      ",
+    "KMS Bismarck",
     6000,
     550,
     200,
-    400,
+    0,
 };
 entities DD{
-    "IJN Fubuki       ",
+    "IJN Fubuki",
     2300,
     250,
     50,
     600,
 };
 entities CL{
-    "HMS Edinburgh    ",
+    "HMS Edinburgh",
     4100,
     350,
     100,
     450,
 };
 entities CA{
-    "USS Des Moines   ",
+    "USS Des Moines",
     5000,
     430,
     150,
@@ -45,7 +45,9 @@ bool go = true;
 //Prototipe Void
 //void display
 void order();
-void display();
+void display1();
+void display2();
+void display3();
 //void command
 void attack();
 void heal();
@@ -60,20 +62,20 @@ int skill (int ATK);
 int torpedoes(int torps);
    
 //Program Utama
-int mai(){
+int main(){
     //Round 1
     enemy = DD;
-    cout<<"Welcome To Boat Game!\n===================="<<endl;
+    cout<<"Welcome To Boat Game!\n============================="<<endl;
     cout<<"A Wild "<<enemy.name<<" Appeared !"<<endl<<endl;
 
-    display();
+    display1();
     //Menjalankan Giliran 1
-    int role1 = (rand()%10)+1;
+    int role = (rand()%10)+3;
     do{
         //Menjalankan giliran player
-        if(role1 % 2 == 0){
+        if(role % 2 == 0){
             order();
-
+            balik1:
             //Memasukan Action
             char Action;
             cin>>Action;
@@ -81,63 +83,69 @@ int mai(){
             //Tindakan Action
 
             //Apabila player memilih 'A'
-            if(Action == 'A'){
+            if(Action == 'A' || Action == 'a'){
                 attack();
-            }
+                
+            
             //Apabila player memilih 'H'
-            else if(Action == 'H'){
+            }else if(Action == 'H' || Action == 'h'){
                 heal();
-            }
+                
+            
             //Apabila player memilih 'S'
-            else if(Action == 'S'){
+            }else if(Action == 'S' || Action == 's'){
                 skill();
-            }
-            //Apabila player memilih 'R'
-            else{
+                
+            
+            //Apabila playerR memilih 'R'
+            }else if(Action == 'R' || Action == 'r'){
                 retreat();
+                if (go == false){return 0;}
+            } else {
+                cout<<"Invalid Input!";
+                goto balik1;
             }
-            if (go == false){return 0;}
-            role1--;
 
+        display1();
+        role--;
         //Menjalankan Enemy
         }else{
             cout<<"Enemy Turn!"<<endl<<endl;
             //Menentukan act enemy
             int EnemyAct = (rand()%4)+1;
             //Enemy Normal Attack
-            if (EnemyAct <= 2){
-               enemyA();
-
+            if (EnemyAct >= 3){
+                enemyA();
+                
             //Enemy skill
-            }else if(EnemyAct == 4){
+            }else if(EnemyAct <= 2){
                 int Hit = (rand()%5)+1;
                 cout<<enemy.name<<" Launches Torpedoes!"<<endl;
                 cout<<". . . .\n. . . ."<<endl<<endl;
-                if (Hit >= 3){
+                if (Hit > 3){
                     cout<<pl.name<<" Evaded "<<enemy.name<<"'s Torps!"<<endl<<endl;
-                    display();
                 }else {
                     int TorpsCrit = (rand()%5)+1;
                     if (TorpsCrit >= 3){
                         cout<<"BOOM! Direct Hit!"<<endl<<endl;
                         pl.HP -= 1.5 * torpedoes(enemy.ATK) - pl.DEF;
-                        display();
 
                     }else{
                         cout<<pl.name<<" Got Hit!"<<endl<<endl;
                         pl.HP -= torpedoes(enemy.ATK) - pl.DEF;
-                        display();
                     }
                 }
+                
             //Enemy using buff 
             }else {
                 enemy.ATK += 30;
                 enemy.torps += 45;
                 cout<<enemy.name<<" Uses Range Finder!\nIncreasing Her Fire Power!"<<endl<<endl;
-                display();
+                
             }
+        display1();
+        role++;
         } 
-        role1++;
     }while (pl.HP > 0 && enemy.HP > 0);
     if (pl.HP <= 0){
         cout<<"Defeat !";
@@ -149,15 +157,14 @@ int mai(){
     cout<<"A New Opponent Has Appeared!"<<endl;
     enemy = CL;
     cout<<"It is "<<enemy.name<<" !"<<endl<<endl;
-    display();
+    display2();
 
     //Menjalankan Giliran 2
-    int role2 = (rand()%10)+1;
     do{
         //Menjalankan giliran player
-        if(role2 % 2 == 0){
+        if(role % 2 == 0){
             order();
-
+            balik2:
             //Memasukan Action
             char Action;
             cin>>Action;
@@ -165,24 +172,25 @@ int mai(){
             //Tindakan Action
 
             //Apabila player memilih 'A'
-            if(Action == 'A'){
+            if(Action == 'A'|| Action == 'a'){
                 attack();
-            }
             //Apabila player memilih 'H'
-            else if(Action == 'H'){
+            }else if(Action == 'H'|| Action == 'h'){
                 heal();
-            }
             //Apabila player memilih 'S'
-            else if(Action == 'S'){
+            }else if(Action == 'S'|| Action == 's'){
                 skill();
-            }
             //Apabila player memilih 'R'
-            else{
+            }else if(Action == 'R'|| Action == 'r'){
                 retreat();
+                if (go == false){return 0;}
+            }else {
+                cout<<"Invalid Input!";
+                goto balik2;
             }
-            if (go == false){return 0;}
-            role2--;
 
+        display2();
+        role--;
         //Menjalankan Enemy
         }else{
             cout<<"Enemy Turn!"<<endl<<endl;
@@ -200,9 +208,9 @@ int mai(){
                 enemy.ATK += 50;
                 cout<<enemy.name<<" Enhance Her AP Shell!"<<endl;
                 cout<<"Increasing Its Fire Power and Penetration Capability!"<<endl<<endl;
-                display();
             }
-            role2++;
+        display2();
+        role++;
         } 
     }while (pl.HP > 0 && enemy.HP > 0);
     if (pl.HP <= 0){
@@ -215,15 +223,14 @@ int mai(){
     cout<<"Enemy Heavy Cruiser Sighted Over The Horizon!"<<endl;
     enemy = CA;
     cout<<"It is "<<enemy.name<<" !"<<endl<<endl;
-    display();
+    display3();
 
     //Menjalankan Giliran 3
-    int role3 = (rand()%10)+1;
     do{
         //Menjalankan giliran player
-        if(role3 % 2 == 0){
+        if(role % 2 == 0){
             order();
-
+            balik3:
             //Memasukan Action
             char Action;
             cin>>Action;
@@ -231,24 +238,30 @@ int mai(){
             //Tindakan Action
 
             //Apabila player memilih 'A'
-            if(Action == 'A'){
+            if(Action == 'A'|| Action == 'a'){
                 attack();
-            }
+                
+            
             //Apabila player memilih 'H'
-            else if(Action == 'H'){
+            }else if(Action == 'H'|| Action == 'h'){
                 heal();
-            }
-            //Apabila player memilih 'S'
-            else if(Action == 'S'){
-                skill();
-            }
-            //Apabila player memilih 'R'
-            else{
-                retreat();
-            }
-            if (go == false){return 0;}
-            role3--;
+                
 
+            //Apabila player memilih 'S'
+            }else if(Action == 'S'|| Action == 's'){
+                skill();
+                
+
+            //Apabila player memilih 'R'
+            }else if (Action == 'R'|| Action == 'r'){
+                retreat();
+                if (go == false){return 0;}
+                goto balik3;
+            }else {
+                cout<<"Invalid Input!";
+            }
+        display3();
+        role--;
         //Menjalankan Enemy
         }else{
             cout<<"Enemy Turn!"<<endl<<endl;
@@ -265,26 +278,24 @@ int mai(){
                 int CRate = (rand()%3)+1;
                 if (CRate >= 2){
                     pl.HP -= serangan(enemy.ATK) - pl.DEF;
-                    display();
+                    display3();
                     pl.HP -= serangan(enemy.ATK) - pl.DEF;
-                    display();
+                    display3();
                     pl.HP -= serangan(enemy.ATK) - pl.DEF;
-                    display();
 
                 }else {
                     cout<<pl.name<<" Dodged The Barrages!"<<endl<<endl;
-                    display();
 
                 }
             //Enemy using buff 
             }else {
                 enemy.ATK += 50;
                 cout<<enemy.name<<" Enhance Her Radar!"<<endl;
-                cout<<"Greatly Increasing Her Fire Power Capability"<<endl<<endl;
-                display();
+                cout<<"Greatly Increasing Her Fire Power Capability!"<<endl<<endl;
             }
+        display3();
+        role++;
         } 
-        role3++;
     }while (pl.HP > 0 && enemy.HP > 0);
     if (enemy.HP <= 0){
         cout<<enemy.name<<" Sleep With The Fishes Tonight!"<<endl;
@@ -319,22 +330,22 @@ void attack(){
     if(CRate <= 2){
         cout<<"Hit!"<<endl<<endl;
         enemy.HP -= serangan(pl.ATK) - enemy.DEF;
-        display();
+        
     }else if(CRate == 3){
         cout<<"Critical Hits!"<<endl<<endl;
         enemy.HP -= critical(pl.ATK) - enemy.DEF;
-        display();
+        
     }else{
-        cout<<"Prinz Eugen's Salvos Missed!"<<endl<<endl;
-        display();
+        cout<<pl.name<<"'s Salvos Missed!"<<endl<<endl;
+        
     }
 }
 //heal
 void heal(){
     pl.HP += 800 + ((rand()%35)-10);
     if (pl.HP > 6000){pl.HP = 6000;}
-    cout<<"Prinz Eugen Repaired Her Wound!"<<endl<<endl;
-    display();
+    cout<<pl.name<<" Repaired Her Wound!"<<endl<<endl;
+    
 }
 //skill
 void skill(){
@@ -344,11 +355,11 @@ void skill(){
     if (CRate >= 2){
         cout<<enemy.name<<" Critically Damaged!!"<<endl<<endl;
         enemy.HP -= skill(pl.ATK) - enemy.DEF;
-        display();
+        
 
     }else {
         cout<<enemy.name<<" Manages To Dodge!"<<endl<<endl;
-        display();
+        
 
     }
 }
@@ -357,6 +368,7 @@ void retreat(){
     cout<<pl.name<<" Sets A Smoke Screen!"<<endl;
     int retreat = (rand()%5)+1;
     if (retreat <=3){
+        cout<<pl.name<<" Retreated Succesfully!";
         go = false;
     }else {
         cout<<enemy.name<<" Uses Radar!\n"<<pl.name<<" Failed To Escape!"<<endl;
@@ -371,14 +383,11 @@ void enemyA(){
     if(CRate >= 3){
         cout<<"Hit!"<<endl<<endl;
         pl.HP -= serangan(enemy.ATK) - pl.DEF;
-        display();
     }else if(CRate == 2){
         cout<<"Critical Hits!"<<endl<<endl;
         pl.HP -= critical(enemy.ATK) - pl.DEF;
-        display();
     }else{
         cout<<enemy.name<<"'s Salvos Missed!"<<endl<<endl;
-        display();
     }
 }
 //Enemy Torps
@@ -388,25 +397,35 @@ void enemyT(){
     cout<<". . . .\n. . . ."<<endl<<endl;
     if (Hit == 3){
         cout<<pl.name<<" Evaded "<<enemy.name<<"'s Torps!"<<endl<<endl;
-        display();
+        
     }else {
         int TorpsCrit = (rand()%5)+1;
         if (TorpsCrit >= 3){
             cout<<"BOOM! Direct Hit!"<<endl<<endl;
             pl.HP -= 1.5 * torpedoes(enemy.torps) - pl.DEF;
-            display();
+            
 
         }else{
             cout<<pl.name<<" Got Hit!"<<endl<<endl;
             pl.HP -= torpedoes(enemy.torps) - pl.DEF;
-            display();
+            
         }
     }
 }
 //display HP
-void display(){
-    cout<<pl.name<<": ["<<pl.HP<<"]"<<endl;
-    cout<<enemy.name<<": ["<<enemy.HP<<"]"<<endl;
+void display1(){
+    cout<<"KMS Bismarck     : ["<<pl.HP<<"]"<<endl;
+    cout<<"IJN Fubuki       : ["<<enemy.HP<<"]"<<endl;
+    cout<<"_____________________________________________"<<endl<<endl;
+}
+void display2(){
+    cout<<"KMS Bismarck     : ["<<pl.HP<<"]"<<endl;
+    cout<<"HMS Edinburgh    : ["<<enemy.HP<<"]"<<endl;
+    cout<<"_____________________________________________"<<endl<<endl;
+}
+void display3(){
+    cout<<"KMS Bismarck     : ["<<pl.HP<<"]"<<endl;
+    cout<<"USS Des Monines  : ["<<enemy.HP<<"]"<<endl;
     cout<<"_____________________________________________"<<endl<<endl;
 }
 //Function
