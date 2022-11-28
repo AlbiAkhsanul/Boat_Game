@@ -1,12 +1,16 @@
 #include <cstdlib>
 //Function
 
+//Get Ship Option
+int getShipOption(){
+    
+}
 //Get Option
 int getOption(){
-    char Action;
-    std::cin>>Action;
+    char Option;
+    std::cin>>Option;
     std::cout<<"_____________________________________________"<<std::endl<<std::endl;
-    return Action;
+    return Option;
 }
 //Serangan biasa
 int serangan(int ATK){
@@ -17,8 +21,14 @@ int critical(int ATK){
     return ATK * 2;
 }
 //Skill
-int skill(int ATK){
-    return (ATK * 4) - (rand()%25);
+int BismarckSkill(int ATK){
+    return (ATK * 3.5) - (rand()%25);
+}
+int VanguardSkill(int ATK){
+    return (ATK * 4.2) - (rand()%25);
+}
+int RichelieuSkill(int ATK){
+    return (ATK * 1.8) - (rand()%25);
 }
 //Torps
 int torpedoes(int Torps){
