@@ -86,7 +86,7 @@ void BuffSkillDuration(){
 void attack(){
     std::cout<<Player.Name<<" Opens Fire!"<<std::endl;
     //Menentukan kondisi 'serangan'
-    short HitRate = (rand()%10)+1;
+    unsigned short HitRate = (rand()%10)+1;
     if(HitRate <= Enemy.EvadeRate){
         std::cout<<Player.Name<<"'s Salvos Missed!"<<std::endl<<std::endl;
         
@@ -121,11 +121,11 @@ void heal(){
 }
 //skill
 void skill(){
+    unsigned short HitRate = (rand()%10)+1;
     if(Player.Skill == "Iron And Blood"){
         std::cout<<Player.Name<<" Uses 'Iron And Blood'! "<<std::endl;
         std::cout<<"Increasing Its Deffense For A Period Of Time"<<std::endl;
         std::cout<<"Beep--\nBeep--\nTarget Acquired! Feuer!!"<<std::endl<<std::endl;
-        short HitRate = (rand()%10)+1;
         if (HitRate <= Enemy.EvadeRate){
             std::cout<<Enemy.Name<<" Manages To Dodge!"<<std::endl<<std::endl;
             
@@ -138,7 +138,6 @@ void skill(){
     }else if(Player.Skill == "Divine Marksman"){
         std::cout<<Player.Name<<" Uses 'Divine Marksman'! "<<std::endl;
         std::cout<<"Belli Dura Despicio!!"<<std::endl<<std::endl;
-        short HitRate = (rand()%10)+1;
         //Vanguard has superb accuracy so it has higher chance to hit
         if (HitRate <= Enemy.EvadeRate - 2){
             std::cout<<Enemy.Name<<" Manages To Dodge!"<<std::endl<<std::endl;
@@ -153,7 +152,6 @@ void skill(){
         std::cout<<Player.Name<<" Uses 'Iris Flagbearer'! "<<std::endl;
         std::cout<<"Increasing Its Evade Rate For A Period Of Time"<<std::endl;
         std::cout<<"Fire!!"<<std::endl<<std::endl;
-        short HitRate = (rand()%10)+1;
         if (HitRate <= Enemy.EvadeRate){
             std::cout<<Enemy.Name<<" Manages To Dodge!"<<std::endl<<std::endl;
             
@@ -187,7 +185,7 @@ void retreat(){
 //Enemy Attack
 void EnemyA(){
     std::cout<<Enemy.Name<<" Opens Fire!"<<std::endl;
-    short HitRate = (rand()%10)+1;
+    unsigned short HitRate = (rand()%10)+1;
     if(HitRate <= Player.EvadeRate){
         std::cout<<Enemy.Name<<"'s Salvos Missed!"<<std::endl<<std::endl;
         
@@ -207,7 +205,7 @@ void EnemyA(){
 }
 //Enemy Torps
 void EnemyT(){
-    short EnemySkillAct = (rand()%2)+1;
+    unsigned short EnemySkillAct = (rand()%2)+1;
     if( EnemySkillAct = 1){
         short TorpsHit = (rand()%10)+1;
         std::cout<<Enemy.Name<<" Launches Torpedoes!"<<std::endl;
@@ -231,7 +229,7 @@ void EnemyT(){
 }
 //Enemy Rapid Fire
 void RapidFire(){
-    short EnemySkillAct = (rand()%2)+1;
+    unsigned short EnemySkillAct = (rand()%2)+1;
     if( EnemySkillAct = 1){
         short RFHit = (rand()%10)+1;
         std::cout<<Enemy.Name<<" Uses Rapid Fire!"<<std::endl;

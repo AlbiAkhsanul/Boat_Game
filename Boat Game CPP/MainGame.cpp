@@ -159,7 +159,7 @@ int main(){
         }else{
             std::cout<<"Enemy Turn!"<<std::endl<<std::endl;
             //Menentukan act enemy
-            short EnemyAct = (rand()%5)+1;
+            unsigned short EnemyAct = (rand()%5)+1;
             if(Enemy.Cooldown <= 0){
                 //Enemy skill
                 EnemySkill();
@@ -252,7 +252,7 @@ int main(){
         }else{
             std::cout<<"Enemy Turn!"<<std::endl<<std::endl;
             //Menentukan act Enemy
-            short EnemyAct = (rand()%5)+1;
+            unsigned short EnemyAct = (rand()%5)+1;
             if(Enemy.Cooldown <= 0){
                 //Enemy skill
                 EnemySkill();
@@ -344,7 +344,7 @@ int main(){
         }else{
             std::cout<<"Enemy Turn!"<<std::endl<<std::endl;
             //Menentukan act Enemy
-            short EnemyAct = (rand()%5)+1;
+            unsigned short EnemyAct = (rand()%5)+1;
             if(Enemy.Cooldown <= 0){
                 //Enemy skill
                 EnemySkill();
