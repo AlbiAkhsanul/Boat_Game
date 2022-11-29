@@ -1,7 +1,7 @@
 #include <string>
 //Entities
 struct entities {
-    std::string name;
+    std::string Name;
     int HP;
     int ATK;
     int DEF;
@@ -85,6 +85,9 @@ entities CA{
     0,
 };
 //Buffer
-entities enemy;
-entities pl;
+entities Enemy;
+entities Player;
+//Buffer stat sebelum buff
+entities PlayerStatAwal;
+entities EnemyStatawal;
 

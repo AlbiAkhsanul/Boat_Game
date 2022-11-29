@@ -8,6 +8,6 @@ short CooldownEY;
 //Buffer Duration
 short DurationPL = 0;
 //Buffer Balik
-bool balik;
+bool Balik;
 //Buffer pilihan kapal
 char PilihanBoat;
