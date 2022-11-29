@@ -34,13 +34,13 @@ void RapidFire();
 void EnemySkill();
 void EnemyBuff();
 //prototipe Function
-int getOption(char Action);
-int serangan(int ATK);
-int critical(int ATK);
-int BismarckSkill (int ATK);
-int VanguardSkill (int ATK);
-int RichelieuSkill (int ATK);
-int torpedoes(int Torps);
+short getOption(char Action);
+short serangan(short ATK);
+short critical(short ATK);
+short BismarckSkill (short ATK);
+short VanguardSkill (short ATK);
+short RichelieuSkill (short ATK);
+short torpedoes(short Torps);
    
 //Program Utama
 int main(){
@@ -101,7 +101,7 @@ int main(){
     std::cout<<"A Wild "<<Enemy.Name<<" Appeared !"<<std::endl<<std::endl;
 
     //Menjalankan Giliran 1
-    int role = 2;
+    short role = 2;
     //Membuat Buffer Cooldown
     CooldownPL = Player.Cooldown;
     CooldownEY = Enemy.Cooldown;
@@ -110,7 +110,6 @@ int main(){
         //Menjalankan giliran player
         if(role % 2 == 0){
             balik1:
-            std::cout<<Player.DEF<<std::endl;
             Balik = false;
             display();
             order();
@@ -160,7 +159,7 @@ int main(){
         }else{
             std::cout<<"Enemy Turn!"<<std::endl<<std::endl;
             //Menentukan act enemy
-            int EnemyAct = (rand()%5)+1;
+            short EnemyAct = (rand()%5)+1;
             if(Enemy.Cooldown <= 0){
                 //Enemy skill
                 EnemySkill();
@@ -253,7 +252,7 @@ int main(){
         }else{
             std::cout<<"Enemy Turn!"<<std::endl<<std::endl;
             //Menentukan act Enemy
-            int EnemyAct = (rand()%5)+1;
+            short EnemyAct = (rand()%5)+1;
             if(Enemy.Cooldown <= 0){
                 //Enemy skill
                 EnemySkill();
@@ -345,7 +344,7 @@ int main(){
         }else{
             std::cout<<"Enemy Turn!"<<std::endl<<std::endl;
             //Menentukan act Enemy
-            int EnemyAct = (rand()%5)+1;
+            short EnemyAct = (rand()%5)+1;
             if(Enemy.Cooldown <= 0){
                 //Enemy skill
                 EnemySkill();

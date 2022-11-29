@@ -2,35 +2,35 @@
 //Function
 
 //Get Ship Option
-int getShipOption(){
+short getShipOption(){
     
 }
 //Get Option
-int getOption(){
+short getOption(){
     char Option;
     std::cin>>Option;
     std::cout<<"_____________________________________________"<<std::endl<<std::endl;
     return Option;
 }
 //Serangan biasa
-int serangan(int ATK){
+short serangan(short ATK){
     return (rand()%35) + ATK - 20;
 }
 //Critikal
-int critical(int ATK){
+short critical(short ATK){
     return ATK * 2;
 }
 //Skill
-int BismarckSkill(int ATK){
+short BismarckSkill(short ATK){
     return (ATK * 3.5) - (rand()%25);
 }
-int VanguardSkill(int ATK){
+short VanguardSkill(short ATK){
     return (ATK * 4.2) - (rand()%25);
 }
-int RichelieuSkill(int ATK){
+short RichelieuSkill(short ATK){
     return (ATK * 1.8) - (rand()%25);
 }
 //Torps
-int torpedoes(int Torps){
+short torpedoes(short Torps){
     return Torps * 2 - ((rand()%40) - 25);
 }

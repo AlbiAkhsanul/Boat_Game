@@ -86,12 +86,12 @@ void BuffSkillDuration(){
 void attack(){
     std::cout<<Player.Name<<" Opens Fire!"<<std::endl;
     //Menentukan kondisi 'serangan'
-    int HitRate = (rand()%10)+1;
+    short HitRate = (rand()%10)+1;
     if(HitRate <= Enemy.EvadeRate){
         std::cout<<Player.Name<<"'s Salvos Missed!"<<std::endl<<std::endl;
         
     }else{
-        int CRate = (rand()%10)+1;
+        short CRate = (rand()%10)+1;
         if(CRate <= Player.CritRate){
             std::cout<<"Critical Hits!"<<std::endl<<std::endl;
             Enemy.HP -= critical(Player.ATK) - Enemy.DEF;
@@ -125,7 +125,7 @@ void skill(){
         std::cout<<Player.Name<<" Uses 'Iron And Blood'! "<<std::endl;
         std::cout<<"Increasing Its Deffense For A Period Of Time"<<std::endl;
         std::cout<<"Beep--\nBeep--\nTarget Acquired! Feuer!!"<<std::endl<<std::endl;
-        int HitRate = (rand()%10)+1;
+        short HitRate = (rand()%10)+1;
         if (HitRate <= Enemy.EvadeRate){
             std::cout<<Enemy.Name<<" Manages To Dodge!"<<std::endl<<std::endl;
             
@@ -138,7 +138,7 @@ void skill(){
     }else if(Player.Skill == "Divine Marksman"){
         std::cout<<Player.Name<<" Uses 'Divine Marksman'! "<<std::endl;
         std::cout<<"Belli Dura Despicio!!"<<std::endl<<std::endl;
-        int HitRate = (rand()%10)+1;
+        short HitRate = (rand()%10)+1;
         //Vanguard has superb accuracy so it has higher chance to hit
         if (HitRate <= Enemy.EvadeRate - 2){
             std::cout<<Enemy.Name<<" Manages To Dodge!"<<std::endl<<std::endl;
@@ -153,7 +153,7 @@ void skill(){
         std::cout<<Player.Name<<" Uses 'Iris Flagbearer'! "<<std::endl;
         std::cout<<"Increasing Its Evade Rate For A Period Of Time"<<std::endl;
         std::cout<<"Fire!!"<<std::endl<<std::endl;
-        int HitRate = (rand()%10)+1;
+        short HitRate = (rand()%10)+1;
         if (HitRate <= Enemy.EvadeRate){
             std::cout<<Enemy.Name<<" Manages To Dodge!"<<std::endl<<std::endl;
             
@@ -173,7 +173,7 @@ void skill(){
 //retreat
 void retreat(){
     std::cout<<Player.Name<<" Sets A Smoke Screen!"<<std::endl;
-    int retreat = (rand()%10)+1;
+    short retreat = (rand()%10)+1;
     if (retreat <= Player.EvadeRate){
         std::cout<<Player.Name<<" Retreated Succesfully!";
         go = false;
@@ -187,12 +187,12 @@ void retreat(){
 //Enemy Attack
 void EnemyA(){
     std::cout<<Enemy.Name<<" Opens Fire!"<<std::endl;
-    int HitRate = (rand()%10)+1;
+    short HitRate = (rand()%10)+1;
     if(HitRate <= Player.EvadeRate){
         std::cout<<Enemy.Name<<"'s Salvos Missed!"<<std::endl<<std::endl;
         
     }else{
-        int CRate = (rand()%10)+1;
+        short CRate = (rand()%10)+1;
         if(CRate <= Enemy.CritRate){
             std::cout<<"Critical Hits!"<<std::endl<<std::endl;
             Player.HP -= critical(Enemy.ATK) - Player.DEF;
@@ -207,16 +207,16 @@ void EnemyA(){
 }
 //Enemy Torps
 void EnemyT(){
-    int EnemySkillAct = (rand()%2)+1;
+    short EnemySkillAct = (rand()%2)+1;
     if( EnemySkillAct = 1){
-        int TorpsHit = (rand()%10)+1;
+        short TorpsHit = (rand()%10)+1;
         std::cout<<Enemy.Name<<" Launches Torpedoes!"<<std::endl;
         std::cout<<". . . .\n. . . ."<<std::endl<<std::endl;
         if (TorpsHit <= Player.EvadeRate){
             std::cout<<Player.Name<<" Evaded "<<Enemy.Name<<"'s Torps!"<<std::endl<<std::endl;
             Enemy.Cooldown =  CooldownEY - 2;
         }else {
-            int TorpsCrit = (rand()%5)+1;
+            short TorpsCrit = (rand()%5)+1;
                 if (TorpsCrit >= 3){
                     std::cout<<"BOOM! Direct Hit!"<<std::endl<<std::endl;
                     Player.HP -= 1.5 * torpedoes(Enemy.ATK) - Player.DEF;
@@ -231,9 +231,9 @@ void EnemyT(){
 }
 //Enemy Rapid Fire
 void RapidFire(){
-    int EnemySkillAct = (rand()%2)+1;
+    short EnemySkillAct = (rand()%2)+1;
     if( EnemySkillAct = 1){
-        int RFHit = (rand()%10)+1;
+        short RFHit = (rand()%10)+1;
         std::cout<<Enemy.Name<<" Uses Rapid Fire!"<<std::endl;
         std::cout<<Enemy.Name<<" Shot Multiple Barrages!"<<std::endl<<std::endl;
         if (RFHit <= Player.EvadeRate){

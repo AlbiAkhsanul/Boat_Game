@@ -2,15 +2,15 @@
 //Entities
 struct entities {
     std::string Name;
-    int HP;
-    int ATK;
-    int DEF;
-    int Torps;
-    int Cooldown;
-    int EvadeRate;
-    int CritRate;
+    short HP;
+    short ATK;
+    short DEF;
+    short Torps;
+    short Cooldown;
+    short EvadeRate;
+    short CritRate;
     std::string Skill;
-    int SkillDuration;
+    short SkillDuration;
 };
 entities BB1{
     "KMS Bismarck",
